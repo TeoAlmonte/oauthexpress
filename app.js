@@ -8,12 +8,13 @@ var exphbs = require('express-handlebars');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
-
+var mongoose = require('mongoose');
 var passport = require('passport')
 var session = require('express-session')
 
 var app = express();
 app.use(session({secret: 'secret'}));
+var db = mongoose.connect('mongodb://localhost/social')
 
 // view engine setup
 app.use(express.static(path.join(__dirname, 'views')));
